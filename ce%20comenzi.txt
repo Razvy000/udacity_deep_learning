@@ -1,0 +1,124 @@
+asta!!!!
+# ca sa mearga placa grafica
+sudo update-alternatives --config x86_64-linux-gnu_gl_conf
+
+sau
+sudo nano /var/lib/dpkg/alternatives/x86_64-linux-gnu_gl_conf 
+http://askubuntu.com/questions/481007/every-reboot-alternatives-for-x86-64-linux-gnu-gl-conf-and-i386-linux-gnu-gl-con
+http://askubuntu.com/questions/620955/how-to-change-priorities-of-x-www-browser
+
+# maybe sudo update-alternatives --auto i386-linux-gnu_gl_conf
+cat /var/log/alternatives.log
+update-alternatives --query x86_64-linux-gnu_gl_conf
+
+
+
+# ca sa mearga nvidia-smi
+locate libnvidia-ml.so
+export LD_LIBRARY_PATH="/usr/lib/nvidia-352/"
+nvidia-smi
+
+lscpi | grep nvidia
+
+nvidia-smi
+
+
+$ sudo dpkg -i cuda-repo-ubuntu1404_7.5-18_amd64.deb
+$ sudo apt-get update
+$ sudo apt-get install cuda
+
+
+sudo ubuntu-drivers devices
+
+modprobe --force-modversion nvidia-uvm
+
+asta!!!!
+sudo update-alternatives --config x86_64-linux-gnu_gl_conf
+
+
+torch 7
+http://torch.ch/docs/getting-started.html#_
+
+neural style
+https://github.com/jcjohnson/neural-style/blob/master/INSTALL.md
+
+source ~/.bashrc
+
+th neural_style.lua -gpu -1 -print_iter 1
+
+
+th neural_style.lua -gpu 0 -print_iter 1
+
+
+
+
+
+
+
+
+
+339  luarocks install cutorch
+  340  luarocks install cunn
+  341  th -e "require 'cutorch'; require 'cunn'; print(cutorch)"
+  342  th neural_style.lua -gpu 0 -print_iter 1
+  343  th neural_style.lua -style_image <image.jpg> -content_image <image.jpg>
+  344  th neural_style.lua -style_image examples/inputs/the_scream.jpg -content_image examples/inputs/razvan.JPG
+  345  luarocks install nn
+  346  th neural_style.lua -style_image examples/inputs/the_scream.jpg -content_image examples/inputs/razvan.JPG
+  347  th neural_style.lua -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG
+  348  th neural_style.lua -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/2000px-10x10_checkered_board.svg.png
+  349  th neural_style.lua -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG -image_size 3648
+  350  th neural_style.lua -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG -image_size 2048
+  351  th neural_style.lua -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG -image_size 1024
+  352  th neural_style.lua -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG -image_size 512
+  353  th neural_style.lua -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG -image_size 600
+  354  th neural_style.lua -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG -image_size 900
+  355  th neural_style.lua -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG -image_size 800
+  356  th neural_style.lua -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG -image_size 700
+  357  th neural_style.lua -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG -image_size 650
+  358  th neural_style.lua -gpu -1 -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG -image_size 650
+  359  th neural_style.lua -gpu -1 -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG -image_size 100
+  360  th neural_style.lua -style_image examples/inputs/escher_sphere.jpg -content_image examples/inputs/razvan.JPG -image_size 700 -optimizer adam
+  361  history
+
+
+
+  489  th neural_style.lua -style_image examples/inputs/starryb0.png -content_image examples/inputs/m.png -num_iterations 500 -output_image starrymeb.png -save_iter 50
+
+mkdir puthere
+
+th neural_style.lua -style_image examples/inputs/starryb0.png -content_image examples/inputs/m.png -num_iterations 500 -output_image puthere/starrymeb.png -save_iter 50
+
+
+th /home/razvan/neural-style/neural_style.lua \
+  -style_image /home/razvan/neural-style/examples/inputs/starryb0.png \
+  -content_image /home/razvan/neural-style/examples/inputs/m.png \
+  -num_iterations 500 \
+  -output_image /home/razvan/neural-style/puthere/starrymeb.png \
+  -save_iter 50
+
+
+
+
+
+  # call painting
+  # out = subprocess.call(
+  #     "cd ~/neural-style; pwd; th neural_style.lua -style_image examples/inputs/starryb0.png -content_image examples/inputs/m.png -num_iterations 100 -output_image puthere/starrymeb.png -save_iter 50",
+  #     # th neural_style.lua -style_image examples/inputs/starryb0.png -content_image examples/inputs/m.png -num_iterations 500 -output_image puthere/starrymeb.png -save_iter 50",
+  #     # th /home/razvan/neural-style/neural_style.lua -style_image /home/razvan/neural-style/examples/inputs/starryb0.png -content_image /home/razvan/neural-style/examples/inputs/m.png -num_iterations 500 -output_image /home/razvan/neural-style/puthere/starrymeb.png -save_iter 50
+  #     stderr=subprocess.STDOUT,
+  #     shell=True)
+
+  # out = subprocess.call(
+  #     "cd ~/neural-style; pwd; th neural_style.lua -content_image {0} -style_image {1} -num_iterations 50 -output_image {2} -save_iter 50".format(content_in_abs_path, style_in_abs_path, "raz_temp/tmp.png"),
+  #     stderr=subprocess.STDOUT,
+  #     shell=True)
+
+
+  # call painting for each chunk
+  # for i in range(len(content_json['images'])):
+  #     content_chunk = content_json['images'][i]["name"]
+  #     print content_chunk
+  #     print os.path.basename(content_chunk)
+  #     print os.path.splitext(content_chunk)[0]
+  #     print os.path.basename(os.path.splitext(content_chunk)[0])

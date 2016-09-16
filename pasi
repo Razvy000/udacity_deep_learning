@@ -1,0 +1,52 @@
+	https://github.com/NVIDIA/DIGITS/blob/master/docs/InstallCuda.md#driver
+
+BIG WARNING:
+	DO NOT DO THIS ON YOUR DAILY COMPUTER
+	RECOMMEND A FRESH UBUNTU YOU CAN EASILY REINSTALL
+	IF MIGHT INSTALL A BAD DRIVER VERSION AND REMOVING IT MIGHT BE A PAIN
+
+
+
+install driver (auto) | view in settings | lscpi
+	verify driver cat /proc/driver/nvidia/version
+
+
+install cuda from local (deb) ...network (deb) did not work
+
+	Further to @TimZaman I'd just like to point out that CUDA runtime error (30) might show if your program is unable to create or open the /dev/nvidia-uvm device file. This is usually fixed by installing package nvidia-modprobe:
+
+sudo apt-get install nvidia-modprobe
+Note also that since your GPU has compute capability 2.1 as per this page you will not be able to use CuDNN and will need to disable support for CuDNN in the Caffe makefile.
+
+	NU!!!
+	apt-get install cuda - This will install the latest toolkit (currently 7.5) and the latest driver 			(currently nvidia-352).
+	IMPORTANT: Don't install this package if you installed your driver with a run file. The Deb package may not be able to fully uninstall your run file driver installation.
+	DA!!!
+	apt-get install cuda-toolkit-7-5 - Installs only the toolkit and not the driver.
+	NU!!!
+	apt-get install cuda-drivers - Installs only the driver and not the toolkit.
+
+
+install digits
+
+da https://github.com/NVIDIA/DIGITS/blob/master/docs/UbuntuInstall.md
+
+
+
+download mnist
+
+
+
+install caffe
+
+http://caffe.berkeleyvision.org/install_apt.html
+
+
+install anaconda
+
+
+
+
+
+
+
